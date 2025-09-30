@@ -1,0 +1,145 @@
+:root {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color-scheme: light dark;
+    --bg: #0f172a;
+    --bg-light: #1e293b;
+    --panel: #334155;
+    --accent: #38bdf8;
+    --accent-light: #bae6fd;
+    --text: #e2e8f0;
+    --text-muted: #cbd5f5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg), var(--bg-light));
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+    gap: 2rem;
+}
+
+header, footer {
+    text-align: center;
+    max-width: 720px;
+}
+
+h1 {
+    margin: 0 0 0.5rem;
+    font-size: 2.2rem;
+}
+
+main {
+    width: min(960px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.control-group, fieldset {
+    background: rgba(51, 65, 85, 0.85);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
+}
+
+.control-group label, legend {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.control-group input[type="range"],
+.control-group select {
+    width: 100%;
+}
+
+fieldset {
+    border: none;
+}
+
+fieldset label {
+    margin-top: 0.75rem;
+}
+
+
+.keyboard {
+    display: flex;
+    justify-content: center;
+}
+
+.key-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.key {
+    width: 68px;
+    height: 180px;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    background: linear-gradient(to bottom, #f8fafc, #cbd5f5);
+    color: #1e293b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: inset 0 -10px 20px rgba(148, 163, 184, 0.5);
+    user-select: none;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.key.black {
+    background: linear-gradient(to bottom, #111827, #0f172a);
+    color: #e2e8f0;
+}
+
+.key::after {
+    content: attr(data-note);
+    font-size: 0.8rem;
+    opacity: 0.75;
+}
+
+.key .key-label {
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+.key.active {
+    transform: translateY(4px);
+    box-shadow: inset 0 -6px 12px rgba(14, 116, 144, 0.6);
+    background: linear-gradient(to bottom, var(--accent-light), var(--accent));
+    color: #0f172a;
+}
+
+@media (max-width: 720px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    .key {
+        width: 52px;
+        height: 140px;
+    }
+}
